@@ -1,13 +1,3 @@
-terraform {
-  required_version = "~> 1.0"
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 2.46"
-    }
-  }
-}
-
 locals {
   vm_name = "cameron-test"
 }
@@ -17,7 +7,7 @@ module "azurem_linux_bastion_test" {
   vm_name        = "${local.vm_name}-l"
   os_type        = "linux"
   username       = "cameron"
-  password       = "test1235"
+  password       = "test1235"# Note stored in plain-text. Don't use!
   if_name        = "cameron-bastion-if"
   public_ip_name = "cameron-bastion-ip"
   subnet_name    = ""
@@ -25,7 +15,7 @@ module "azurem_linux_bastion_test" {
   vm_rg_name     = ""
   subnet_rg_name = ""
   vm_tags = {
-    name       = local.vm_name 
+    name       = local.vm_name
     CreatedBy  = "Cameron"
     CreatedFor = ""
   }
@@ -42,7 +32,7 @@ module "azurem_windows_bastion_test" {
   vm_name        = "${local.vm_name}-w"
   os_type        = "windows"
   username       = "cameron"
-  password       = "!@#*tst35"
+  password       = "!@#*tst35" # Note stored in plain-text. Don't use!
   if_name        = "cameron-bastion-if-windows"
   public_ip_name = "cameron-bastion-ip-windows"
   subnet_name    = ""
@@ -50,7 +40,7 @@ module "azurem_windows_bastion_test" {
   vm_rg_name     = ""
   subnet_rg_name = ""
   vm_tags = {
-    name       = local.vm_name 
+    name       = local.vm_name
     CreatedBy  = "Cameron"
     CreatedFor = ""
   }

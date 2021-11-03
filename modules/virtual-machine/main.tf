@@ -1,13 +1,3 @@
-terraform {
-  required_version = "~> 1.0"
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 2.46"
-    }
-  }
-}
-
 provider "azurerm" {
   features {}
 }
@@ -80,7 +70,7 @@ resource "azurerm_linux_virtual_machine" "linux_vm" {
   network_interface_ids = [
     azurerm_network_interface.if.id,
   ]
-  
+
   tags = var.vm_tags
 
   admin_ssh_key {
@@ -92,11 +82,11 @@ resource "azurerm_linux_virtual_machine" "linux_vm" {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
-  source_image_reference  { 
+  source_image_reference {
     publisher = var.vm_sri.publisher
-    offer = var.vm_sri.offer
-    sku = var.vm_sri.sku
-    version = var.vm_sri.version
+    offer     = var.vm_sri.offer
+    sku       = var.vm_sri.sku
+    version   = var.vm_sri.version
   }
 }
 
@@ -111,7 +101,7 @@ resource "azurerm_windows_virtual_machine" "windows_vm" {
   network_interface_ids = [
     azurerm_network_interface.if.id,
   ]
-  
+
   tags = var.vm_tags
 
   os_disk {
@@ -119,11 +109,11 @@ resource "azurerm_windows_virtual_machine" "windows_vm" {
     storage_account_type = "Standard_LRS"
   }
 
-  source_image_reference  { 
+  source_image_reference {
     publisher = var.vm_sri.publisher
-    offer = var.vm_sri.offer
-    sku = var.vm_sri.sku
-    version = var.vm_sri.version
+    offer     = var.vm_sri.offer
+    sku       = var.vm_sri.sku
+    version   = var.vm_sri.version
   }
 }
 
